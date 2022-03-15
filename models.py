@@ -14,13 +14,13 @@ class Product(Base):
     __tablename__ = "Store Products"
 
     product_id = Column(Integer, primary_key=True)
-    name = Column("Name", String)
-    price = Column("Price", Integer)
-    quantity = Column("Quantity", Integer)
-    date_updated = Column("Date Updated", Date)
+    product_name = Column("Name", String)
+    product_price = Column("Price", Integer)
+    product_quantity = Column("Quantity", Integer)
+    product_date = Column("Date Updated", Date)
 
     
 def __repr__(self):
-    return (f"Name: {self.name} Price: {self.price} Quantity: {self.quantity} Date Updated{self.date_updated}")
+    return  format(f'Product ID: {self.product_id} Name: {self.product_name} Price: {self.product_price} Quantity: {self.product_quantity} Date: {self.product_date}')
     
     
