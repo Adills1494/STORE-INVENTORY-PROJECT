@@ -6,7 +6,6 @@ from sqlalchemy.orm import sessionmaker
 engine = create_engine("sqlite:///store_inventory.db", echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
-
 Base = declarative_base()
 
 
