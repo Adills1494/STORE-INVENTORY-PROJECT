@@ -204,7 +204,7 @@ def app():
             time.sleep(1.5)
             with open('backup.csv', 'w', newline='') as csv_file:
                 headers = ['Product_name', 'Product_price', 'Product_quantity', 'Date_updated']
-                writer = csv.DictWriter(csv_file, delimiter='|', fieldnames = headers)
+                writer = csv.DictWriter(csv_file, delimiter=',', fieldnames = headers)
                 writer.writeheader()
                 for product in session.query(Product):
                     writer.writerow({
@@ -212,7 +212,7 @@ def app():
                         'Product_price': product.product_price, 
                         'Product_quantity': product.product_quantity, 
                         'Date_updated': product.product_date})
-                print("All done!")
+                print(' Database successfully backed up! ')
                 time.sleep(1.5) 
         
         elif choice == '4':
@@ -266,4 +266,4 @@ def app():
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
     add_csv()
-    app()                            
+    app()                    
