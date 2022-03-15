@@ -226,13 +226,13 @@ def app():
                 try:
                     user_product_id = int(input("Enter Product ID: "))
                 except ValueError:
-                    print("Oops. The Product ID should be a number. Try again!")
+                    print("\nOops! The Product ID should be a number. Try again!")
                 else:
                     if user_product_id in id_options:
                         id_choice = user_product_id
                         id_error = False
                     else:
-                        print("Oops. That Product ID doesn't exist. Try again!")
+                        print("\nOops! That Product ID doesn't exist. Try again!")
             the_product = session.query(Product).filter(Product.product_id == id_choice).first()
             print('--------------------------')
             print(f'ID: {the_product.product_id}')
@@ -266,4 +266,4 @@ def app():
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
     add_csv()
-    app()                   
+    app()                            
