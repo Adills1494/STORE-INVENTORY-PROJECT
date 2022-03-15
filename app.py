@@ -18,7 +18,7 @@ def menu():
               \rS.) Search for a Product
               \rE.) Exit program
               \r----------''')
-        menu_choice = input('\nWhat would you like to do?:  ')
+        menu_choice = input('\nWhat would you like to do?:  ').upper()
         print('\n')
         if menu_choice in  ['V', 'A', 'B', 'S', 'E']:
             return menu_choice
