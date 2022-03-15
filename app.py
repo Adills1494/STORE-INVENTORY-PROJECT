@@ -12,15 +12,15 @@ def menu():
               \rTONY's STORE INVENTORY
               \ro o o o o o o o o o o o''')
         print('''\n--- Menu ---
-              \r1.) View all Products
-              \r2.) Add a new product to inventory
-              \r3.) Backup the entire Database
-              \r4.) Search for a Product
-              \r5.) Exit program
+              \rV.) View all Products
+              \rA.) Add a new product to inventory
+              \rB.) Backup the entire Database
+              \rS.) Search for a Product
+              \rE.) Exit program
               \r----------''')
         menu_choice = input('\nWhat would you like to do?:  ')
         print('\n')
-        if menu_choice in  ['1', '2', '3', '4', '5']:
+        if menu_choice in  ['V', 'A', 'B', 'S', 'E']:
             return menu_choice
         else:
             input('''\n*x*x*x*x*x*x*x*x*x*x*x*
@@ -166,12 +166,12 @@ def app():
     while app_running:
         choice = menu()
         
-        if choice == '1':
+        if choice == 'V':
             for product in session.query(Product):
                 print(f'{product.product_id} | {product.product_name} | {product.product_quantity} | $' + (f'{product.product_price}'))
             input('\nPress Enter to return to the Main Menu.') 
         
-        elif choice == '2':
+        elif choice == 'A':
             print('--- New product info ---')
             name = input('Product Name: ')
             date = datetime.date.today()
@@ -199,7 +199,7 @@ def app():
             time.sleep(1.5)
             session.commit()
         
-        elif choice == '3':
+        elif choice == 'B':
             print("Backing up the database to 'backup.csv'...")
             time.sleep(1.5)
             with open('backup.csv', 'w', newline='') as csv_file:
@@ -215,7 +215,7 @@ def app():
                 print(' Database successfully backed up! ')
                 time.sleep(1.5) 
         
-        elif choice == '4':
+        elif choice == 'S':
             id_options = []
             for product in session.query(Product):
                 id_options.append(product.product_id)
@@ -256,7 +256,7 @@ def app():
                 print('Product Deleted!')
                 time.sleep(1.5)
         
-        elif choice == '5':
+        elif choice == 'E':
             app_running = False
             print('''!o!o! GOODBYE !o!o!
                   \r~_~_~_~_~_~_~_~_~_~_~
@@ -266,4 +266,4 @@ def app():
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
     add_csv()
-    app()                    
+    app()                      
